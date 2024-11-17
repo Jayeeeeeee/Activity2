@@ -37,3 +37,8 @@
         FileWrite(Action, InputText, ProcessedText)
     End Sub
 End Class
+
+'If using AES functions 
+'If SecretKey.Length < 16 Then
+'Throw New ArgumentException("Secret key must be at least 16 characters long.")
+'End If

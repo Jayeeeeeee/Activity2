@@ -61,3 +61,30 @@
         End Try
     End Function
 End Module
+
+'Using the AES functions
+'Function Encrypt(ByVal InputText As String, ByVal SecretKey As String) As String
+'    Using aes As Aes = Aes.Create()
+'        aes.Key = Encoding.UTF8.GetBytes(SecretKey.Substring(0, 16))
+'        aes.IV = New Byte(15) {} ' Zero initialization vector for simplicity
+
+'        Using encryptor = aes.CreateEncryptor()
+'            Dim plainBytes = Encoding.UTF8.GetBytes(InputText)
+'            Dim encryptedBytes = encryptor.TransformFinalBlock(plainBytes, 0, plainBytes.Length)
+'            Return Convert.ToBase64String(encryptedBytes)
+'        End Using
+'    End Using
+'End Function
+
+'Function Decrypt(ByVal InputText As String, ByVal SecretKey As String) As String
+'    Using aes As Aes = Aes.Create()
+'        aes.Key = Encoding.UTF8.GetBytes(SecretKey.Substring(0, 16))
+'        aes.IV = New Byte(15) {} ' Zero initialization vector for simplicity
+
+'        Using decryptor = aes.CreateDecryptor()
+'            Dim encryptedBytes = Convert.FromBase64String(InputText)
+'            Dim decryptedBytes = decryptor.TransformFinalBlock(encryptedBytes, 0, encryptedBytes.Length)
+'            Return Encoding.UTF8.GetString(decryptedBytes)
+'        End Using
+'    End Using
+'End Function
