@@ -22,15 +22,16 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As DataGridViewCellStyle = New DataGridViewCellStyle()
         txt_Text = New TextBox()
         lbl_Text = New Label()
         lbl_Shift = New Label()
         cmb_Actions = New ComboBox()
         lbl_Actions = New Label()
         GroupBox1 = New GroupBox()
+        lbl_Characters = New Label()
         dgv_Results = New DataGridView()
         btn_Process = New Button()
         txt_Secret = New TextBox()
@@ -76,7 +77,7 @@ Partial Class Form1
         cmb_Actions.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
         cmb_Actions.DropDownStyle = ComboBoxStyle.DropDownList
         cmb_Actions.Items.AddRange(New Object() {"", "Encrypt", "Decrypt"})
-        cmb_Actions.Location = New Point(110, 89)
+        cmb_Actions.Location = New Point(110, 107)
         cmb_Actions.Name = "cmb_Actions"
         cmb_Actions.Size = New Size(240, 23)
         cmb_Actions.TabIndex = 3
@@ -86,7 +87,7 @@ Partial Class Form1
         lbl_Actions.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
         lbl_Actions.AutoSize = True
         lbl_Actions.Font = New Font("Berlin Sans FB", 14.5F)
-        lbl_Actions.Location = New Point(6, 89)
+        lbl_Actions.Location = New Point(6, 107)
         lbl_Actions.Name = "lbl_Actions"
         lbl_Actions.Size = New Size(68, 23)
         lbl_Actions.TabIndex = 2
@@ -95,6 +96,7 @@ Partial Class Form1
         ' GroupBox1
         ' 
         GroupBox1.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
+        GroupBox1.Controls.Add(lbl_Characters)
         GroupBox1.Controls.Add(dgv_Results)
         GroupBox1.Controls.Add(btn_Process)
         GroupBox1.Controls.Add(cmb_Actions)
@@ -110,6 +112,14 @@ Partial Class Form1
         GroupBox1.TabIndex = 5
         GroupBox1.TabStop = False
         ' 
+        ' lbl_Characters
+        ' 
+        lbl_Characters.AutoSize = True
+        lbl_Characters.Location = New Point(111, 86)
+        lbl_Characters.Name = "lbl_Characters"
+        lbl_Characters.Size = New Size(0, 15)
+        lbl_Characters.TabIndex = 6
+        ' 
         ' dgv_Results
         ' 
         dgv_Results.AllowUserToAddRows = False
@@ -118,30 +128,30 @@ Partial Class Form1
         dgv_Results.AllowUserToResizeRows = False
         dgv_Results.Anchor = AnchorStyles.Top Or AnchorStyles.Bottom Or AnchorStyles.Left Or AnchorStyles.Right
         dgv_Results.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
-        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = SystemColors.Control
-        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9.0F)
-        DataGridViewCellStyle1.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.True
-        dgv_Results.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle7.BackColor = SystemColors.Control
+        DataGridViewCellStyle7.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle7.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle7.WrapMode = DataGridViewTriState.True
+        dgv_Results.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
         dgv_Results.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         dgv_Results.Location = New Point(6, 183)
         dgv_Results.Name = "dgv_Results"
-        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = SystemColors.Control
-        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9.0F)
-        DataGridViewCellStyle2.ForeColor = SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
-        dgv_Results.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle8.BackColor = SystemColors.Control
+        DataGridViewCellStyle8.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle8.ForeColor = SystemColors.WindowText
+        DataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = DataGridViewTriState.True
+        dgv_Results.RowHeadersDefaultCellStyle = DataGridViewCellStyle8
         dgv_Results.RowHeadersVisible = False
         dgv_Results.RowHeadersWidth = 51
         dgv_Results.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter
-        dgv_Results.RowsDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter
+        dgv_Results.RowsDefaultCellStyle = DataGridViewCellStyle9
         dgv_Results.Size = New Size(344, 219)
         dgv_Results.TabIndex = 5
         dgv_Results.TabStop = False
@@ -149,8 +159,8 @@ Partial Class Form1
         ' btn_Process
         ' 
         btn_Process.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
-        btn_Process.Font = New Font("Berlin Sans FB", 10.0F)
-        btn_Process.Location = New Point(6, 118)
+        btn_Process.Font = New Font("Berlin Sans FB", 10F)
+        btn_Process.Location = New Point(6, 136)
         btn_Process.Name = "btn_Process"
         btn_Process.Size = New Size(344, 23)
         btn_Process.TabIndex = 4
@@ -171,7 +181,7 @@ Partial Class Form1
         ' 
         Label1.Anchor = AnchorStyles.Top Or AnchorStyles.Left Or AnchorStyles.Right
         Label1.AutoSize = True
-        Label1.Font = New Font("Berlin Sans FB", 12.0F)
+        Label1.Font = New Font("Berlin Sans FB", 12F)
         Label1.Location = New Point(1, 162)
         Label1.Name = "Label1"
         Label1.Size = New Size(104, 18)
@@ -180,7 +190,7 @@ Partial Class Form1
         ' 
         ' Form1
         ' 
-        AutoScaleDimensions = New SizeF(7.0F, 15.0F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.AppWorkspace
         ClientSize = New Size(380, 432)
@@ -203,6 +213,7 @@ Partial Class Form1
     Friend WithEvents dgv_Results As DataGridView
     Friend WithEvents Label1 As Label
     Friend WithEvents txt_Secret As TextBox
+    Friend WithEvents lbl_Characters As Label
 
 End Class
 
