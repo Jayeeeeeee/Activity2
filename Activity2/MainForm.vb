@@ -4,6 +4,7 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.CenterToScreen()
         Me.AcceptButton = btn_Process
+        btn_Process.Enabled = False
         dgv_Results.ColumnCount = 3
         dgv_Results.Columns(0).Name = " Original  Text"
         dgv_Results.Columns(1).Name = " Action"
@@ -17,9 +18,17 @@ Public Class Form1
         If inputText.Length < 16 Then
             lbl_Characters.Text = $"{16 - inputText.Length} more character(s) needed."
             lbl_Characters.ForeColor = Color.Red
+            btn_Process.Enabled = False
+
+        ElseIf inputText.Length > 16 Then
+            lbl_Characters.Text = $" Reduce {inputText.Length - 16} character(s)."
+            lbl_Characters.ForeColor = Color.Red
+            btn_Process.Enabled = False
+
         Else
             lbl_Characters.Text = "Input length is valid."
             lbl_Characters.ForeColor = Color.Green
+            btn_Process.Enabled = True
         End If
     End Sub
 
@@ -30,14 +39,12 @@ Public Class Form1
         Dim ProcessedText = ""
 
         If String.IsNullOrEmpty(SecretKey) Then
-            Throw New ArgumentException("Secret key cannot be empty.")
-        End If
+            MessageBox.Show("Secret key cannot be empty.")
 
-        If SecretKey.Length < 16 Then
-            Throw New ArgumentException("Secret key must be at least 16 characters long.")
-        End If
+        ElseIf SecretKey.Length < 16 Then
+            MessageBox.Show("Secret key must be at least 16 characters long.")
 
-        If String.IsNullOrEmpty(Action) Then
+        ElseIf String.IsNullOrEmpty(Action) Then
             MessageBox.Show("Please select an action.")
             Return
         End If

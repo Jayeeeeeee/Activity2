@@ -1,0 +1,8 @@
+Action: Encrypt
+Input Text: asd
+Processed Text: gLuDWup4tDNpLhO23ECF0Q==
+-------------------------------------
+Action: Decrypt
+Input Text: gLuDWup4tDNpLhO23ECF0Q==
+Processed Text: asd
+-------------------------------------

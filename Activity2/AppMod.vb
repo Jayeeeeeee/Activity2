@@ -27,12 +27,13 @@ Module AppMod
             End Using
         End Using
     End Function
+
     Function dgvWrite(ByVal InputText As String, Action As String, ProcessedText As String)
         Return Form1.dgv_Results.Rows.Add(InputText, Action, ProcessedText)
     End Function
 
     Function FileWrite(ByVal Action As String, InputText As String, ProcessedText As String)
-        Dim FilePath As String = "C:\Users\xstop\source\repos\CipherApp\CipherApp\ProcessedText.txt"
+        Dim FilePath As String = "C:\Users\xstop\source\repos\Activity2\Activity2\ProcessedText.txt"
         Try
             Using Writer As New System.IO.StreamWriter(FilePath, True)
                 Writer.WriteLine($"Action: {Action}")
