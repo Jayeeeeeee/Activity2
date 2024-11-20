@@ -6,3 +6,115 @@ Action: Decrypt
 Input Text: gLuDWup4tDNpLhO23ECF0Q==
 Processed Text: asd
 -------------------------------------
+
+Imports System.Windows.Forms
+Imports System.Drawing
+
+Public Class LoginForm
+    Inherits Form
+
+    ' Declare form controls
+    Private txtUsername As TextBox
+    Private txtPassword As TextBox
+    Private btnLogin As Button
+    Private lblMessage As Label
+
+    ' Constructor to initialize the form
+    Public Sub New()
+        ' Set form properties
+        Me.Text = "Login Demo"
+        Me.Size = New Size(400, 300)
+        Me.StartPosition = FormStartPosition.CenterScreen
+
+        ' Initialize controls
+        txtUsername = New TextBox()
+        txtPassword = New TextBox()
+        btnLogin = New Button()
+        lblMessage = New Label()
+
+        ' Configure Username TextBox
+        txtUsername.Location = New Point(150, 50)
+        txtUsername.Size = New Size(200, 25)
+        txtUsername.PlaceholderText = "Enter Username"
+
+        ' Configure Password TextBox
+        txtPassword.Location = New Point(150, 90)
+        txtPassword.Size = New Size(200, 25)
+        txtPassword.PasswordChar = "*"c
+        txtPassword.PlaceholderText = "Enter Password"
+
+        ' Configure Login Button
+        btnLogin.Location = New Point(150, 130)
+        btnLogin.Size = New Size(200, 30)
+        btnLogin.Text = "Login"
+        AddHandler btnLogin.Click, AddressOf btnLogin_Click
+
+        ' Configure Feedback Label
+        lblMessage.Location = New Point(150, 170)
+        lblMessage.Size = New Size(200, 40)
+        lblMessage.Text = ""
+        lblMessage.ForeColor = Color.Red
+        lblMessage.TextAlign = ContentAlignment.MiddleCenter
+
+        ' Add controls to the form
+        Me.Controls.Add(txtUsername)
+        Me.Controls.Add(txtPassword)
+        Me.Controls.Add(btnLogin)
+        Me.Controls.Add(lblMessage)
+    End Sub
+
+    ' Event handler for the Login button click
+    Private Sub btnLogin_Click(sender As Object, e As EventArgs)
+        ' Hardcoded salt and hashed password for demo
+        Dim storedSalt As String = "randomSalt123"
+        Dim storedHashedPassword As String = CustomHash("MySecurePassword" & storedSalt, 10)
+
+        ' Capture the entered username and password
+        Dim enteredUsername As String = txtUsername.Text
+        Dim enteredPassword As String = txtPassword.Text
+
+        ' Validate input
+        If String.IsNullOrWhiteSpace(enteredUsername) OrElse String.IsNullOrWhiteSpace(enteredPassword) Then
+            lblMessage.Text = "Please enter both username and password."
+            lblMessage.ForeColor = Color.Red
+            Return
+        End If
+
+        ' Hash the entered password with the salt
+        Dim enteredHashedPassword As String = CustomHash(enteredPassword & storedSalt, 10)
+
+        ' Compare hashed passwords
+        If enteredHashedPassword = storedHashedPassword Then
+            lblMessage.Text = "Login successful!"
+            lblMessage.ForeColor = Color.Green
+        Else
+            lblMessage.Text = "Invalid username or password."
+            lblMessage.ForeColor = Color.Red
+        End If
+    End Sub
+
+    ' Custom hash function with fixed length output
+    Private Function CustomHash(ByVal input As String, ByVal fixedLength As Integer) As String
+        ' Simple hash algorithm for demo purposes
+        Dim hash As Long = 0
+        Dim prime As Long = 31 ' A prime number used for hashing
+
+        ' Hashing process: iterate over each character in the input string
+        For Each ch As Char In input
+            hash = (hash * prime) + Asc(ch)
+        Next
+
+        ' Convert hash to hexadecimal string
+        Dim hashString As String = hash.ToString("x")
+
+        ' Ensure hash string has the fixed length
+        If hashString.Length < fixedLength Then
+            hashString = hashString.PadLeft(fixedLength, "0"c) ' Pad with zeros if short
+        ElseIf hashString.Length > fixedLength Then
+            hashString = hashString.Substring(0, fixedLength) ' Truncate if long
+        End If
+
+        ' Return the fixed-length hash
+        Return hashString
+    End Function
+End Class
